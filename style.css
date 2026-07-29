@@ -1,0 +1,740 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffe4ec,#fff7ef);
+    min-height:100vh;
+    overflow-x:hidden;
+    color:#444;
+    position:relative;
+}
+
+/* ==========================
+   BACKGROUND
+========================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top,#ffffff66 0%,transparent 40%),
+    linear-gradient(135deg,#ffe6ef,#fff4dc);
+    z-index:-2;
+}
+
+/* ==========================
+   LOADER
+========================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#fff6f8;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.loader-heart{
+    font-size:70px;
+    animation:beat 1s infinite;
+}
+
+#loader p{
+    margin-top:20px;
+    color:#cc4b75;
+    font-size:18px;
+}
+
+@keyframes beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:70px 0;
+    text-align:center;
+}
+
+.main-title{
+    font-family:'Dancing Script',cursive;
+    font-size:64px;
+    color:#d6336c;
+}
+
+.subtitle{
+    margin-top:15px;
+    color:#777;
+    font-size:18px;
+    margin-bottom:55px;
+}
+
+/* ==========================
+   3D SCENE
+========================== */
+
+.scene{
+    perspective:1600px;
+    display:flex;
+    justify-content:center;
+    margin-bottom:80px;
+}
+
+.card{
+    width:720px;
+    height:440px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:1s;
+    cursor:pointer;
+}
+
+/* JS will add this class */
+
+.card{
+    --rotateX:0deg;
+    --rotateY:0deg;
+    transform-style:preserve-3d;
+    transition:
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.card.flip{
+    transform:
+        rotateX(var(--rotateX))
+        rotateY(calc(var(--rotateY) + 180deg));
+}
+/* ==========================
+   CARD
+========================== */
+
+.card-face{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border-radius:24px;
+    overflow:hidden;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+/* ==========================
+   FRONT
+========================== */
+
+.front{
+
+    background:
+    linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),
+    url("assets/paper.jpg");
+
+    background-size:cover;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:60px;
+
+    position:relative;
+
+}
+
+.front h2{
+
+    font-family:'Dancing Script';
+
+    color:#d6336c;
+
+    font-size:52px;
+
+    margin-bottom:25px;
+
+}
+
+.message{
+
+    font-size:19px;
+
+    line-height:1.9;
+
+    max-width:480px;
+
+    color:#555;
+
+}
+
+.signature{
+
+    margin-top:35px;
+
+    font-family:'Dancing Script';
+
+    font-size:34px;
+
+    color:#cc3366;
+
+}
+
+.stamp{
+
+    position:absolute;
+
+    right:28px;
+
+    top:28px;
+
+    width:85px;
+
+    height:105px;
+
+    border:2px dashed #cc3366;
+
+    border-radius:8px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    background:#ffffff88;
+
+}
+
+/* ==========================
+   BACK
+========================== */
+
+.back{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    transform:rotateY(180deg);
+    overflow:hidden;
+}
+
+.back video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:24px;
+}
+
+
+/* ==========================
+   GALLERY
+========================== */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    margin-bottom:80px;
+
+}
+
+.photo{
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+
+    transition:.35s;
+
+    background:white;
+
+    padding:12px;
+
+}
+
+.photo:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.photo img{
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+}
+
+/* ==========================
+   LETTER
+========================== */
+
+.letter{
+
+    max-width:850px;
+
+    margin:auto;
+
+    padding:55px;
+
+    border-radius:24px;
+
+    background:#ffffffdd;
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+.letter h2{
+
+    font-family:'Dancing Script';
+
+    font-size:50px;
+
+    color:#d6336c;
+
+    margin-bottom:25px;
+
+}
+
+.letter p{
+
+    line-height:2;
+
+    font-size:18px;
+
+    color:#555;
+
+}
+
+/* ==========================
+   MUSIC BUTTON
+========================== */
+
+#musicBtn{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:65px;
+
+    height:65px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ff5f95;
+
+    color:white;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 25px rgba(255,95,149,.4);
+
+    transition:.3s;
+
+}
+
+#musicBtn:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE
+========================================== */
+
+@media screen and (max-width:1024px){
+
+.container{
+    width:95%;
+}
+
+.card{
+    width:90vw;
+    height:55vw;
+}
+
+.photo img{
+    height:260px;
+}
+
+}
+
+@media screen and (max-width:768px){
+
+body{
+    overflow-x:hidden;
+}
+
+.main-title{
+    font-size:42px;
+    line-height:1.2;
+}
+
+.subtitle{
+    font-size:16px;
+    margin-bottom:35px;
+}
+
+.scene{
+    margin-bottom:40px;
+}
+
+.card{
+    width:94vw;
+    height:60vw;
+    max-width:500px;
+    max-height:320px;
+}
+
+.front{
+    padding:20px;
+}
+
+.front h2{
+    font-size:34px;
+}
+
+.message{
+    font-size:15px;
+    line-height:1.6;
+}
+
+.signature{
+    font-size:28px;
+}
+
+.stamp{
+    width:60px;
+    height:75px;
+    font-size:28px;
+    top:15px;
+    right:15px;
+}
+
+.gallery{
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.photo img{
+    height:240px;
+}
+
+.letter{
+    padding:25px;
+}
+
+.letter h2{
+    font-size:36px;
+}
+
+.letter p{
+    font-size:16px;
+    line-height:1.8;
+}
+
+#musicBtn{
+    width:58px;
+    height:58px;
+    font-size:24px;
+    right:18px;
+    bottom:18px;
+}
+
+}
+
+@media screen and (max-width:480px){
+
+.main-title{
+    font-size:34px;
+}
+
+.subtitle{
+    font-size:14px;
+}
+
+.card{
+    width:95vw;
+    height:65vw;
+}
+
+.front{
+    padding:15px;
+}
+
+.front h2{
+    font-size:28px;
+}
+
+.message{
+    font-size:14px;
+}
+
+.signature{
+    font-size:24px;
+}
+
+.stamp{
+    width:50px;
+    height:65px;
+    font-size:22px;
+}
+
+.photo img{
+    height:220px;
+}
+
+.letter{
+    padding:18px;
+}
+
+.letter h2{
+    font-size:30px;
+}
+
+.letter p{
+    font-size:15px;
+}
+
+}
+
+/* ==========================
+   FLOATING HEARTS
+========================== */
+
+#hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    color:#ff5c93;
+    font-size:24px;
+    opacity:.8;
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0) scale(.8);
+opacity:0;
+}
+
+15%{
+opacity:.9;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg) scale(1.3);
+opacity:0;
+}
+
+}
+
+/* ==========================
+   SPARKLES
+========================== */
+
+.sparkle{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+background:white;
+
+border-radius:50%;
+
+pointer-events:none;
+
+animation:spark .9s linear forwards;
+
+box-shadow:
+0 0 10px white,
+0 0 20px white;
+
+}
+
+@keyframes spark{
+
+0%{
+
+opacity:1;
+
+transform:scale(0);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:
+translateY(-30px)
+scale(2);
+
+}
+
+}
+
+/* ==========================
+   LOADER
+========================== */
+
+.hide-loader{
+
+animation:
+loaderFade .8s forwards;
+
+}
+
+@keyframes loaderFade{
+
+to{
+
+opacity:0;
+
+visibility:hidden;
+
+}
+
+}
+
+/* ==========================
+   PAGE ENTRANCE
+========================== */
+
+.container{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:1s ease;
+
+}
+
+.container.show{
+
+opacity:1;
+
+transform:none;
+
+}
+
+/* ==========================
+   MUSIC BUTTON
+========================== */
+
+#musicBtn{
+
+transition:
+transform .8s,
+background .3s,
+box-shadow .3s;
+
+}
+
+#musicBtn.playing{
+
+background:#ff3d7d;
+
+box-shadow:
+0 0 25px rgba(255,70,140,.7);
+
+}
+
+/* ==========================
+   CARD GLOW
+========================== */
+
+.card{
+
+transition:
+transform .8s,
+filter .4s;
+
+}
+
+/* ==========================
+   HEARTS
+========================== */
+
+.heart{
+
+user-select:none;
+
+}
+.back video{
+
+    opacity:0;
+
+    transition:opacity .6s ease;
+
+}
+
+.card.flip .back video{
+
+    opacity:1;
+
+}
+
+.scene{
+    perspective:1600px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
